@@ -11,18 +11,18 @@ config.enable_wayland = false
 -- config.color_scheme = "Solarized Light"
 
 function get_appearance()
-  if wezterm.gui then
-    return wezterm.gui.get_appearance()
-  end
-  return 'Dark'
+	if wezterm.gui then
+		return wezterm.gui.get_appearance()
+	end
+	return "Dark"
 end
 
 function scheme_for_appearance(appearance)
-  if appearance:find 'Dark' then
-    return 'Tokyo Night'
-  else
-    return 'Tokyo Night Day'
-  end
+	if appearance:find("Dark") then
+		return "Tokyo Night"
+	else
+		return "Github Light (Gogh)"
+	end
 end
 
 config.color_scheme = scheme_for_appearance(get_appearance())
