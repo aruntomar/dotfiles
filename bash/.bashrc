@@ -129,3 +129,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # add Pulumi to the PATH
 export PATH=$PATH:/home/arun/.pulumi/bin
+
+# configure pyenv
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+
