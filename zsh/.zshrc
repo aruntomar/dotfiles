@@ -131,9 +131,10 @@ unset key
 
 
 # add Pulumi to the PATH
-export PATH=$PATH:/home/arun/.pulumi/bin
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
+#export PATH=$PATH:/home/arun/.pulumi/bin
 
-export PATH=$PATH:/usr/local/go/bin
+
+export fpath=(~/.zsh/functions $fpath)
+# autoload -U compinit && compinit
+
+#. "$HOME/.local/bin/env"
