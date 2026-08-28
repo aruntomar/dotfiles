@@ -59,3 +59,5 @@ zmodule zsh-users/zsh-history-substring-search -u git
 zmodule zsh-users/zsh-autosuggestions -u git
 # }}} End configuration added by Zim install
 
+export OMARCHY_PATH="/usr/share/omarchy"
+export PATH="$OMARCHY_PATH/bin:$PATH"
