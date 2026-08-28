@@ -26,3 +26,5 @@ alias cat="bat"
 
 alias ls="eza --icons=always"
 alias ll="eza -l --icons=always"
+
+export PATH="/home/arun/.local/bin:$PATH"
