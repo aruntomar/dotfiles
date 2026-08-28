@@ -1,125 +1,29 @@
--- first thing, load helpers
-require("helpers")
+-- Learn how to configure Hyprland: https://wiki.hypr.land/Configuring/Start/
 
--- This is an example Hyprland Lua config file.
--- Refer to the wiki for more information.
--- https://wiki.hypr.land/Configuring/Start/
+-- Omarchy's bootstrap keeps path setup out of this user config.
+dofile((os.getenv("OMARCHY_PATH") or "/usr/share/omarchy") .. "/default/hypr/bootstrap.lua")
 
--- Please note not all available settings / options are set here.
--- For a full list, see the wiki
-
--- You can (and should!!) split this configuration into multiple files
--- Create your files separately and then require them like this:
--- require("myColors")
-
-------------------
----- MONITORS ----
-------------------
-
--- See https://wiki.hypr.land/Configuring/Basics/Monitors/
-hl.monitor({
-	output = "",
-	mode = "preferred",
-	position = "auto",
-	scale = "auto",
-})
-
----------------------
----- MY PROGRAMS ----
----------------------
-
--- Set programs that you use
-local terminal = "kitty"
-local fileManager = "dolphin"
-local menu = "hyprlauncher"
-
--------------------
----- AUTOSTART ----
--------------------
-
--- See https://wiki.hypr.land/Configuring/Basics/Autostart/
-
--- Autostart necessary processes (like notifications daemons, status bars, etc.)
--- Or execute your favorite apps at launch like this:
+-- Disable all Omarchy default bindings. Add your own in hypr/bindings.lua.
+-- omarchy_default_bindings = false
 --
--- hl.on("hyprland.start", function ()
---   hl.exec_cmd(terminal)
---   hl.exec_cmd("nm-applet")
---   hl.exec_cmd("waybar & hyprpaper & firefox")
--- end)
---
--- Inside your hyprland.lua (or a startup/autostart Lua module)
-hl.on("hyprland.start", function()
-	hl.exec_cmd("omarchy-launch-shell")
-end)
+-- Or disable only bindings for Omarchy's preinstalled apps/web apps while
+-- keeping core window-manager bindings:
+-- omarchy_preinstalled_bindings = false
 
--------------------------------
----- ENVIRONMENT VARIABLES ----
--------------------------------
+-- Load Omarchy defaults.
+require("default.hypr.omarchy")
 
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
+-- Put your personal overrides in these files. They're loaded after Omarchy's
+-- defaults so package updates can improve the defaults without rewriting your
+-- ~/.config/hypr files.
+require("hypr.monitors")
+require("hypr.input")
+require("hypr.bindings")
+require("hypr.looknfeel")
+require("hypr.autostart")
 
-hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_SIZE", "24")
+-- Toggle config flags dynamically.
+require("default.hypr.toggles")
 
------------------------
------ PERMISSIONS -----
------------------------
-
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Permissions/
--- Please note permission changes here require a Hyprland restart and are not applied on-the-fly
--- for security reasons
-
--- hl.config({
---   ecosystem = {
---     enforce_permissions = true,
---   },
--- })
-
--- hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
--- hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
--- hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
-
----------------
----- INPUT ----
----------------
-
-hl.config({
-	input = {
-		kb_layout = "us",
-		kb_variant = "",
-		kb_model = "",
-		kb_options = "",
-		kb_rules = "",
-
-		follow_mouse = 1,
-
-		sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
-
-		touchpad = {
-			natural_scroll = false,
-		},
-	},
-})
-
-hl.gesture({
-	fingers = 3,
-	direction = "horizontal",
-	action = "workspace",
-})
-
--- Example per-device config
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
-hl.device({
-	name = "epic-mouse-v1",
-	sensitivity = -0.5,
-})
-
----------------------
----- KEYBINDINGS ----
----------------------
-
-require("keybindings")
-require("applications")
-require("looknfeel")
-require("utilities")
+-- Add any other personal Hyprland configuration below.
+-- o.window("qemu", { workspace = "5" })
