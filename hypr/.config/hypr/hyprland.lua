@@ -47,6 +47,11 @@ local menu = "hyprlauncher"
 --   hl.exec_cmd("nm-applet")
 --   hl.exec_cmd("waybar & hyprpaper & firefox")
 -- end)
+--
+-- Inside your hyprland.lua (or a startup/autostart Lua module)
+hl.on("hyprland.start", function()
+	hl.exec_cmd("omarchy-launch-shell")
+end)
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -117,3 +122,4 @@ hl.device({
 require("keybindings")
 require("applications")
 require("looknfeel")
+require("utilities")
