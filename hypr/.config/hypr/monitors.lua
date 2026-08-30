@@ -32,3 +32,13 @@ hl.monitor({
     position = "auto-right", -- Position to the right of your laptop screen
     scale = 1,
 })
+
+-- Assign workspaces 1 to 3 to the built-in laptop display
+hl.workspace_rule({ workspace = "1", monitor = "eDP-1", default = true })
+hl.workspace_rule({ workspace = "2", monitor = "eDP-1" })
+hl.workspace_rule({ workspace = "3", monitor = "eDP-1" })
+
+-- Assign workspaces 4 to 6 to your external display
+hl.workspace_rule({ workspace = "4", monitor = "HDMI-A-1", default = true })
+hl.workspace_rule({ workspace = "5", monitor = "HDMI-A-1" })
+hl.workspace_rule({ workspace = "6", monitor = "HDMI-A-1" })
