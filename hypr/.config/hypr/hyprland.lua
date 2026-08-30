@@ -24,11 +24,5 @@ require("hypr.autostart")
 
 -- Toggle config flags dynamically.
 require("default.hypr.toggles")
-
 -- Add any other personal Hyprland configuration below.
 -- o.window("qemu", { workspace = "5" })
--- configure mouse for left hand
-hl.device({
-  name = "logitech-m720-triathlon-multi-device-mouse-1",
-  left_handed = true,
-})

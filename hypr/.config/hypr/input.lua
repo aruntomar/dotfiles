@@ -55,3 +55,34 @@
 -- Enable touchpad gestures for moving focus (helpful on scrolling layout).
 -- hl.gesture({ fingers = 3, direction = "left", action = function() hl.dispatch(hl.dsp.focus({ direction = "l" })) end })
 -- hl.gesture({ fingers = 3, direction = "right", action = function() hl.dispatch(hl.dsp.focus({ direction = "r" })) end })
+
+-- Ensure new windows spawn on the currently active workspace of your active monitor
+hl.config({
+    misc = {
+        focus_on_activate = true,
+    },
+})
+
+-- configure mouse for left hand
+hl.device({
+  name = "logitech-m720-triathlon-multi-device-mouse-1",
+  left_handed = true,
+})
+
+-- Lid Closed: Disable built-in display (workspaces automatically migrate to external)
+hl.bind("switch:on:Apple SMC power/lid events", function()
+    hl.monitor({
+        output = "eDP-1",
+        disabled = true,
+    })
+end, { locked = true })
+
+-- Lid Opened: Re-enable built-in display
+hl.bind("switch:off:Apple SMC power/lid events", function()
+    hl.monitor({
+        output = "eDP-1",
+        disabled = false,
+        mode = "preferred",
+        position = "0x0",
+    })
+end, { locked = true })
