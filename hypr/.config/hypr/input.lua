@@ -75,6 +75,9 @@ hl.bind("switch:on:Apple SMC power/lid events", function()
         output = "eDP-1",
         disabled = true,
     })
+
+  -- 2. Force workspaces 1, 2, 3 (or whichever were on eDP-1) to move to your external monitor (DP-1)
+    os.execute("hyprctl --batch 'dispatch moveworkspacetomonitor 1 HDMI-A-1; dispatch moveworkspacetomonitor 2 HDMI-A-1; dispatch moveworkspacetomonitor 3 HDMI-A-1'")
 end, { locked = true })
 
 -- Lid Opened: Re-enable built-in display
@@ -85,4 +88,7 @@ hl.bind("switch:off:Apple SMC power/lid events", function()
         mode = "preferred",
         position = "0x0",
     })
+
+  -- 2. Move your primary workspaces back to the built-in screen
+    os.execute("hyprctl --batch 'dispatch moveworkspacetomonitor 1 eDP-1; dispatch moveworkspacetomonitor 2 eDP-1; dispatch moveworkspacetomonitor 3 eDP-1'")
 end, { locked = true })
