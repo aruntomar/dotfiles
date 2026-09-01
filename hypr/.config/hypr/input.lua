@@ -92,3 +92,9 @@ hl.bind("switch:off:Apple SMC power/lid events", function()
   -- 2. Move your primary workspaces back to the built-in screen
     os.execute("hyprctl --batch 'dispatch moveworkspacetomonitor 1 eDP-1; dispatch moveworkspacetomonitor 2 eDP-1; dispatch moveworkspacetomonitor 3 eDP-1'")
 end, { locked = true })
+
+-- configure/swap apple keyboard caps and ctrl key.
+hl.device({
+  name = "apple-spi-keyboard",
+  kb_options = "ctrl:swapcaps",
+})
