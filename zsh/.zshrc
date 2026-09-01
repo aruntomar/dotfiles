@@ -151,3 +151,6 @@ export NVM_DIR="$HOME/.nvm"
 
 export OMARCHY_PATH="/usr/share/omarchy"
 export PATH="$OMARCHY_PATH/bin:$PATH"
+
+# opencode
+export PATH=/home/arun/.opencode/bin:$PATH
